@@ -15,7 +15,10 @@
 	--color-accent: #706f6f;
 }
 
-
 * {
-    font-family: 'Poppins', sans-serif;
+	font-family: "Poppins", sans-serif;
+}
+
+a.active {
+	@apply bg-base-300;
 }
