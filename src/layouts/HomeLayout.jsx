@@ -9,6 +9,7 @@ const HomeLayout = () => {
                 <Header />
             </header>
             <main>
+                <button className='btn btn-secondary'>CLick Me</button>
                 <section className='left-nav'></section>
                 <section className='main'>
                     <Outlet></Outlet>
