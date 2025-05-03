@@ -10,11 +10,10 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				path: "/",
 				element: <Home></Home>,
 			},
 			{
-				path: "/category/:id",
+				path: "category/:id",
 				element: <CategoryNews></CategoryNews>,
 				loader: () => fetch('/news.json'),
 			}
