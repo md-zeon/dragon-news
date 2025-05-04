@@ -23,8 +23,8 @@ const Navbar = () => {
 				<NavLink to='/career'>Career</NavLink>
 			</div>
 			<div className='login-btn flex gap-5'>
-				<img
-					src={userIcon}
+				<img className="w-10 rounded-full"
+					src={user ? user.photoURL : userIcon}
 					alt=''
 				/>
 				{user ? (

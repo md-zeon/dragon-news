@@ -3,45 +3,59 @@ import { Link } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
-	const { createUser, setUser } = use(AuthContext);
-    const [error, setError] = useState("");
+	const { createUser, setUser, updateUser } = use(AuthContext);
+	const [error, setError] = useState("");
 
-    const handleError = (name, photoURL, email, password) => {
-        if (name < 5) {
-            setError("Name must be at least 5 characters");
-        } else if (photoURL.length < 5) {
-            setError("Photo URL must be at least 5 characters");
-        } else if (!email.endsWith(".com")) {
-            setError("Email must end with .com");
-        } else if (password.length < 6) {
-            setError("Password must be at least 6 characters");
-        } else {
-            setError("");
-        }
-    }
+	const handleError = (name, photoURL, email, password) => {
+		if (name < 5) {
+			setError("Name must be at least 5 characters");
+		} else if (photoURL.length > 100) {
+			setError("Photo URL must be less than 100 characters");
+		} else if (!email.endsWith(".com")) {
+			setError("Email must end with .com");
+		} else if (password.length < 6) {
+			setError("Password must be at least 6 characters");
+		} else {
+			setError("");
+		}
+	};
 
 	const handleRegister = (e) => {
 		e.preventDefault();
-        setError("");
+		setError("");
 		const form = e.target;
 		const name = form.name.value;
 		const photoURL = form.photoURL.value;
 		const email = form.email.value;
 		const password = form.password.value;
 		console.log(name, photoURL, email, password);
-        handleError(name, photoURL, email, password);
-        if (error) {
-            alert(error);
-            return;
-        }
+		handleError(name, photoURL, email, password);
+		if (error) {
+			alert(error);
+			return;
+		}
 
 		createUser(email, password)
 			.then((result) => {
-				console.log(result.user);
-                setUser(result.user);
+				const user = result.user;
+				console.log(user);
+				updateUser({
+					displayName: name,
+					photoURL: photoURL,
+				})
+					.then(() => {
+                        form.reset();
+						setUser({ ...user, displayName: name, photoURL: photoURL });
+						alert("User created successfully");
+					})
+					.catch((error) => {
+						console.log(error);
+					});
 			})
 			.catch((error) => {
-				alert(error.message);
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				alert(errorMessage, errorCode);
 			});
 	};
 	return (
