@@ -8,6 +8,7 @@ import NewsDetails from "../pages/NewsDetails";
 import PrivateRoute from "../Provider/PrivateRoute";
 import Loading from "../pages/Loading";
 import AuthLayout from "../layouts/AuthLayout";
+import ResetPassWord from "../pages/ResetPassWord";
 
 const router = createBrowserRouter([
 	{
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
 				path: "/auth/register",
 				Component: Register,
 			},
+			{
+				path: "/auth/reset-password",
+				Component: ResetPassWord,
+			}
 		],
 	},
 	{

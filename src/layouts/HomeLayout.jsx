@@ -3,8 +3,8 @@ import { Outlet, useNavigation } from "react-router";
 import Header from "../components/Header";
 import LatestNews from "../components/LatestNews";
 import Navbar from "../components/Navbar";
-import LeftAside from "../components/homelayout/LeftAside";
-import RightAside from "../components/homelayout/RightAside";
+import LeftAside from "../components/homeLayout/LeftAside";
+import RightAside from "../components/homeLayout/RightAside";
 import Loading from "../pages/Loading";
 
 const HomeLayout = () => {

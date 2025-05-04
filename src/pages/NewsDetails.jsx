@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import RightAside from "../components/homelayout/RightAside";
+import RightAside from "../components/homeLayout/RightAside";
 import NewsDetailsCard from "../components/NewsDetailsCard";
 import { useLoaderData, useParams } from "react-router";
 

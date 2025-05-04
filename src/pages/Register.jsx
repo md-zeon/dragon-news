@@ -1,11 +1,13 @@
 import React, { use, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Register = () => {
 	const { createUser, setUser, updateUser } = use(AuthContext);
 	const [error, setError] = useState("");
+	const location = useLocation();
+	const navigate = useNavigate();
 
 	const handleError = (name, photoURL, email, password) => {
 		if (name < 5) {
@@ -48,6 +50,7 @@ const Register = () => {
                         form.reset();
 						setUser({ ...user, displayName: name, photoURL: photoURL });
 						toast.success("User created successfully");
+						navigate(location?.state ? location.state : "/");
 					})
 					.catch((error) => {
 						console.log(error);
