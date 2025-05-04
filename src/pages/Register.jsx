@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Register = () => {
 	const { createUser, setUser, updateUser } = use(AuthContext);
@@ -28,17 +29,17 @@ const Register = () => {
 		const photoURL = form.photoURL.value;
 		const email = form.email.value;
 		const password = form.password.value;
-		console.log(name, photoURL, email, password);
+		// console.log(name, photoURL, email, password);
 		handleError(name, photoURL, email, password);
 		if (error) {
-			alert(error);
+			toast.error(error);
 			return;
 		}
 
 		createUser(email, password)
 			.then((result) => {
 				const user = result.user;
-				console.log(user);
+				// console.log(user);
 				updateUser({
 					displayName: name,
 					photoURL: photoURL,
@@ -46,7 +47,7 @@ const Register = () => {
 					.then(() => {
                         form.reset();
 						setUser({ ...user, displayName: name, photoURL: photoURL });
-						alert("User created successfully");
+						toast.success("User created successfully");
 					})
 					.catch((error) => {
 						console.log(error);
@@ -54,8 +55,8 @@ const Register = () => {
 			})
 			.catch((error) => {
 				const errorCode = error.code;
-				const errorMessage = error.message;
-				alert(errorMessage, errorCode);
+				// const errorMessage = error.message;
+				toast.error( errorCode);
 			});
 	};
 	return (

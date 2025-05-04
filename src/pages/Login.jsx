@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
 	const { signIn } = use(AuthContext);
@@ -13,17 +14,17 @@ const Login = () => {
 		const form = event.target;
 		const email = form.email.value;
 		const password = form.password.value;
-		console.log({ email, password });
+		// console.log({ email, password });
 		signIn(email, password)
 			.then((result) => {
-				console.log(result.user);
+				// console.log(result.user);
 				navigate(location?.state ? location.state : "/");
 			})
 			.catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
 				setError(errorCode);
-				// alert(errorMessage);
+				toast.error(errorMessage);
 			});
 	};
 

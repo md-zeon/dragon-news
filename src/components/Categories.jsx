@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import Category from "./Category";
 
-const categoryPromise = fetch("categories.json").then((res) => res.json());
+const categoryPromise = fetch("../categories.json").then((res) => res.json());
 
 const Categories = () => {
 	// console.log(categoryPromise);
