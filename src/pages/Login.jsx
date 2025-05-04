@@ -19,6 +19,8 @@ const Login = () => {
 			.then((result) => {
 				// console.log(result.user);
 				navigate(location?.state ? location.state : "/");
+				toast.success("Login Successful!");
+				form.reset();
 			})
 			.catch((error) => {
 				const errorCode = error.code;

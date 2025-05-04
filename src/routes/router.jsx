@@ -4,10 +4,10 @@ import Home from "../pages/Home";
 import CategoryNews from "../pages/CategoryNews";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import AuthLayout from "../../AuthLayout";
 import NewsDetails from "../pages/NewsDetails";
 import PrivateRoute from "../Provider/PrivateRoute";
 import Loading from "../pages/Loading";
+import AuthLayout from "../layouts/AuthLayout";
 
 const router = createBrowserRouter([
 	{
