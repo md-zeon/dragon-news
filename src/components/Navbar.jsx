@@ -17,7 +17,7 @@ const Navbar = () => {
 	};
 	return (
 		<div className='flex items-center justify-between'>
-			<div className=''>{user && user.email}</div>
+			<div className='text-xl font-bold'>{user && user.displayName}</div>
 			<div className='nav flex gap-5 text-accent'>
 				<NavLink to='/'>Home</NavLink>
 				<NavLink to='/about'>About</NavLink>
@@ -26,7 +26,7 @@ const Navbar = () => {
 			<div className='login-btn flex gap-5'>
 				<img className="w-10 rounded-full"
 					src={user ? user.photoURL : userIcon}
-					alt=''
+					alt={user ? user.displayName : "User"}
 				/>
 				{user ? (
 					<button
